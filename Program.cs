@@ -56,6 +56,24 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 
+// ===== データベース自動マイグレーション =====
+// アプリ起動時にテーブルを自動作成
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+        context.Database.EnsureCreated(); // テーブルがなければ作成
+        Console.WriteLine("データベーステーブルの確認・作成が完了しました。");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"データベースの初期化中にエラーが発生しました: {ex.Message}");
+    }
+}
+
+
 // ===== 実行 =====
 
 app.UseStaticFiles();
