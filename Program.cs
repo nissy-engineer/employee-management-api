@@ -9,14 +9,31 @@ var builder = WebApplication.CreateBuilder(args);
 // ===== 各種設定 =====
 
 // データベース接続の設定
-// Railwayの環境変数 DATABASE_URL を優先、なければ appsettings.json から取得
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
-    ?? builder.Configuration.GetConnectionString("DefaultConnection");
-    
+string connectionString;
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+if (!string.IsNullOrEmpty(databaseUrl))
+{
+    // RailwayのDATABASE_URLをNpgsql形式に変換
+    var uri = new Uri(databaseUrl);
+    var host = uri.Host;
+    var port = uri.Port;
+    var database = uri.AbsolutePath.TrimStart('/');
+    var userInfo = uri.UserInfo.Split(':');
+    var username = userInfo[0];
+    var password = userInfo.Length > 1 ? userInfo[1] : "";
+
+    connectionString = $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true";
+}
+else
+{
+    // ローカル開発環境用
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+}
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-// builder.Services.AddOpenApi();  // ← コメントアウト（削除でもOK）
 builder.Services.AddControllers();
 
 // CORS設定 = 異なるドメイン間のリソース共有
@@ -42,14 +59,6 @@ var app = builder.Build();
 // ===== 実行 =====
 
 app.UseStaticFiles();
-// 開発環境でのOpenAPI機能も不要ならコメントアウト
-// if (app.Environment.IsDevelopment())
-// {
-//     app.MapOpenApi();  // ← コメントアウト
-// }
-
-// Railwayは自動でHTTPSリダイレクトを処理するのでコメントアウト
-// app.UseHttpsRedirection();
 
 app.UseCors("AllowReact");
 app.MapControllers();
