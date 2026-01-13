@@ -1,17 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "3ul0jPsTrm8=",
-  "success": true,
+  "dgSpecHash": "ANfepYrE6WE=",
+  "success": false,
   "projectFilePath": "C:\\Users\\ngu5t\\Projects\\employee-management-api\\employee-management-api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.1\\microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
-    "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.0\\microsoft.entityframeworkcore.10.0.0.nupkg.sha512",
-    "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.0\\microsoft.entityframeworkcore.abstractions.10.0.0.nupkg.sha512",
-    "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.0\\microsoft.entityframeworkcore.analyzers.10.0.0.nupkg.sha512",
-    "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.0\\microsoft.entityframeworkcore.relational.10.0.0.nupkg.sha512",
-    "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
-    "C:\\Users\\ngu5t\\.nuget\\packages\\npgsql\\10.0.0\\npgsql.10.0.0.nupkg.sha512",
-    "C:\\Users\\ngu5t\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\10.0.0\\npgsql.entityframeworkcore.postgresql.10.0.0.nupkg.sha512"
+    "C:\\Users\\ngu5t\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\10.0.0\\npgsql.entityframeworkcore.postgresql.10.0.0.nupkg.sha512",
+    "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.22\\microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.22\\microsoft.windowsdesktop.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.22\\microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\ngu5t\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.22\\microsoft.netcore.app.host.win-x64.8.0.22.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1202",
+      "level": "Error",
+      "message": "パッケージ Npgsql.EntityFrameworkCore.PostgreSQL 10.0.0 は net8.0 (.NETCoreApp,Version=v8.0) と互換性がありません。 パッケージ Npgsql.EntityFrameworkCore.PostgreSQL 10.0.0 がサポートするもの: net10.0 (.NETCoreApp,Version=v10.0)",
+      "projectPath": "C:\\Users\\ngu5t\\Projects\\employee-management-api\\employee-management-api.csproj",
+      "filePath": "C:\\Users\\ngu5t\\Projects\\employee-management-api\\employee-management-api.csproj",
+      "libraryId": "Npgsql.EntityFrameworkCore.PostgreSQL",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
