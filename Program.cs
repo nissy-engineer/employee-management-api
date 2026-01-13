@@ -1,8 +1,8 @@
 
 // アプリケーションが起動する時に一番最初に実行されるファイル
 
-using Microsoft.EntityFrameworkCore; 
-using employee_management_api.Models; 
+using Microsoft.EntityFrameworkCore;
+using employee_management_api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddOpenApi();
+// builder.Services.AddOpenApi();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
 // CORS設定 = 異なるドメイン間のリソース共有
@@ -36,7 +39,9 @@ var app = builder.Build();
 app.UseStaticFiles();
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    // app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
 app.UseCors("AllowReact");

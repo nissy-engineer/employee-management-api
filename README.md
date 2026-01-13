@@ -17,7 +17,12 @@ employee-management-api/
 │   └── launchSettings.json
 ├── wwwroot/
 │   └── uploads/ 
-├── Program.cs
+├── .gitignore
+├── appsettings.Development.json
 ├── appsettings.json
-└── employee-management-api.csproj
+├── employee-management-api.csproj
+├── employee-management-api.http
+├── employee-management-api.sln
+├── Program.cs
+└── README.md
 ```
