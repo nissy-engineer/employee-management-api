@@ -28,7 +28,8 @@ if (!string.IsNullOrEmpty(databaseUrl))
 else
 {
     // ローカル開発環境用
-    connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? throw new InvalidOperationException("接続文字列 'DefaultConnection' が設定されていません");
 }
 
 builder.Services.AddDbContext<AppDbContext>(options =>
